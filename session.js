@@ -6,7 +6,3 @@ function generateSessionCode() {
     }
     return code;
 }
-
-
-
-console.log(generateSessionCode());
