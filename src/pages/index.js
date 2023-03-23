@@ -16,11 +16,11 @@ export default function Home() {
           border="none"
           color="#FFDE59"
           height="100px"
-          onClick={() => console.log("You clicked on the pink circle!")}
+          onClick={() => console.log("Testing our button!")}
           radius="10%"
           width="400px"
-          children="Start"
-        />
+        >
+          Start </StartButton>
       </div>
     </div>
   )

@@ -1,14 +1,11 @@
 import React from "react";
 
-
 const StartButton = ({
     border,
     color,
     children,
-    height,
     onClick,
     radius,
-    width
 }) => {
     return (
         <button
@@ -17,15 +14,16 @@ const StartButton = ({
                 backgroundColor: color,
                 color: "#F0080A",
                 border,
-                borderRadius: radius,
-                height,
-                width,
-                fontSize: "50px",
+                borderRadius: "36px",
+                height: "8vh",
+                width: "300px",
+                maxWidth: "100%",
+                fontSize: "2.5vw",
             }}
         >
             {children}
         </button>
     );
-}
+};
 
 export default StartButton;
