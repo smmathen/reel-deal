@@ -7,7 +7,6 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-
     <div style = {{height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white"}}> 
         <h1 style = {{marginTop: "10vh", marginBottom: "5vh", fontSize: "10vh"}}> Session Start: </h1>
         <div style = {{marginBottom: "20vh"}}>
