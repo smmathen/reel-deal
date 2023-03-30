@@ -7,22 +7,28 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Session() {
   return (
     <div style = {{height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white"}}> 
-        <Ticket />
-        <p style = {{position: "absolute", top: "12vh", fontSize: "5vh"}}>
-            Session Code:
-        </p>
-        <p style = {{position: "absolute", top: "18vh", fontSize: "5vh"}}>
-            JF2!D
-        </p>
-        <p style = {{fontSize: "5vh"}}>
-            Movie Watchers:
-        </p>
-        <ul style = {{fontSize: "4vh"}}>
-            <li> Sean</li>
-            <li> Shawn</li>
-            <li> Shaun</li>
-            <li> Shawne</li>
-        </ul>
+        <div style = {{position: "relative", top: "10%", fontSize: "300%"}}>
+            <Ticket />
+            <div>
+                <p style = {{position: "absolute", top: "25%", fontSize: "100%", left: "20%"}}>
+                    Session Code:
+                </p>
+                <p style = {{position: "absolute", top: "45%", fontSize: "100%", left: "35%"}}>
+                    JF2!D
+                </p>
+            </div>
+        </div>
+        <div style = {{position: "relative", top: "10%"}}>
+            <p style = {{fontSize: "5vh"}}>
+                Movie Watchers:
+            </p>
+            <ul style = {{fontSize: "4vh"}}>
+                <li> Sean</li>
+                <li> Shawn</li>
+                <li> Shaun</li>
+                <li> Shawne</li>
+            </ul>
+        </div>
     </div>
   )
 }
