@@ -1,7 +1,5 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Button from '../components/Button'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,14 +14,29 @@ export default function Start() {
                 </input>
             </form>
         </div>
-        <form style = {{display: "flex", flexDirection: "column", alignItems: "center"}}>
-            <input type = "button" onClick = "alert('host clicked')" value = "Host Session" 
-                style = {{fontSize: "4vh", color: "#fb0605", backgroundColor: "#f9c84f", width: "40vh", height: "10vh", marginBottom: "4vh", borderRadius: "30px"}}>
-            </input>
-            <input type = "button" onClick = "alert('join clicked')" value = "Join Session" 
-                style = {{fontSize: "4vh", color: "#fb0605", backgroundColor: "#f9c84f", width: "40vh", height: "10vh", borderRadius: "30px"}}>
-            </input>
-        </form>     
-    </div>
+        <div style = {{display: "flex", flexDirection: "column", alignItems: "center"}}>
+            <Button
+                border="none"
+                color="#FFDE59"
+                height="100px"
+                onClick={() => console.log("Testing our button!")}
+                radius="10%"
+                width="400px"
+            >
+                <a href="http://localhost:3000/hostSession"> Host Session </a>
+            </Button>
+            <br/>
+            <Button
+                border="none"
+                color="#FFDE59"
+                height="100px"
+                onClick={() => console.log("Testing our button!")}
+                radius="10%"
+                width="400px"
+            >
+                <a href="http://localhost:3000/join"> Join Session </a>
+            </Button>
+        </div>
+    </div>     
   )
 }

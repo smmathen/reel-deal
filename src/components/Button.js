@@ -1,11 +1,10 @@
 import React from "react";
 
-const StartButton = ({
+const Button = ({
     border,
     color,
     children,
     onClick,
-    radius,
 }) => {
     return (
         <button
@@ -26,4 +25,4 @@ const StartButton = ({
     );
 };
 
-export default StartButton;
+export default Button;

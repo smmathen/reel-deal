@@ -1,7 +1,6 @@
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
 import Logo from '../components/Logo'
-import StartButton from '../components/StartButton'
+import StartButton from '../components/Button'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +19,8 @@ export default function Home() {
           radius="10%"
           width="400px"
         >
-          Start </StartButton>
+          <a href="http://localhost:3000/start"> Start </a>
+          </StartButton>
       </div>
     </div>
   )
