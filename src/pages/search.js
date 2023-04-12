@@ -16,7 +16,7 @@ export default function Join() {
       <div style={{display: "flex", marginTop: "2vh"}}>
         <div style={{marginRight: "1vh"}}>
           <input type="text" placeholder="Action" style={{height: "5vh", width: "10vh", fontSize: "2.5vh", padding: "0.5vh", borderRadius: "50px"}} />
-        </div>
+        </div>m
         <div style={{marginRight: "1vh"}}>
           <input type="text" placeholder="Adventure" style={{height: "5vh", width: "14vh", fontSize: "2.5vh", padding: "0.5vh", borderRadius: "50px"}} />
         </div>
