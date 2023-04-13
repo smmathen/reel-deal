@@ -36,7 +36,7 @@ export default function Home() {
   }
 
   return (
-    <div className="Home" style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+    <div className="Home" style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "white" }}>
       {/* Logo */}
       <Logo />
 
@@ -47,13 +47,11 @@ export default function Home() {
         <div style={{ marginRight: "7rem" }} />
         {/* X Button */}
         <Button icon="♥" color="#4CAF50" onClick={handleXClick} radius="80%" width="100px" />
-        </div>
-        <div style={{ marginBottom: "1rem" }} />
-        { /* menu bar  <div style={{ marginRight: "7rem" }} />or the bottom */}
-        <Bar/>
-
-
       </div>
+      <div style={{ marginBottom: "1rem" }} />
+      { /* menu bar  <div style={{ marginRight: "7rem" }} />or the bottom */}
+      <Bar />
+    </div>
 
   );
 }
