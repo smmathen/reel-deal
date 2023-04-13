@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../components/Logo";
+import Poster from "../components/Poster";
 import Bar from "../components/Bar"
 
 
