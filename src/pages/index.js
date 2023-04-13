@@ -1,6 +1,10 @@
+
+import { Inter } from 'next/font/google'
+import Logo from '../components/Logo'
+import StartButton from '../components/Button'
 import React from "react";
-import Logo from "../components/Logo";
 import Bar from "../components/Bar"
+
 
 
 const Button = ({ color, icon, onClick, radius, width }) => {
@@ -36,6 +40,7 @@ export default function Home() {
   }
 
   return (
+
     <div className="Home" style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
       {/* Logo */}
       <Logo />
@@ -56,4 +61,5 @@ export default function Home() {
       </div>
 
   );
+
 }
