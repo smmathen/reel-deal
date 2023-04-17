@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../components/Logo";
 import Bar from "../components/Bar"
-
+import { useState, useEffect } from "react";
 
 const Button = ({ color, icon, onClick, radius, width }) => {
   return (
@@ -27,6 +27,20 @@ const Button = ({ color, icon, onClick, radius, width }) => {
 };
 
 export default function Home() {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("./movies.json");
+      const data = await response.json();
+      setMovies(data);
+    };
+
+    fetchData();
+  }, []);
+
+  // console.log(movies[0].Title)
+
   function handleLoveClick() {
     console.log("Love button clicked");
   }
@@ -52,6 +66,5 @@ export default function Home() {
       { /* menu bar  <div style={{ marginRight: "7rem" }} />or the bottom */}
       <Bar />
     </div>
-
   );
 }
