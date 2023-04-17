@@ -28,18 +28,18 @@ const Button = ({ color, icon, onClick, radius, width }) => {
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
+  const [imageURL, setImageURL] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("./movies.json");
       const data = await response.json();
       setMovies(data);
+      setImageURL(data[0].Image_Poster_Link);
     };
 
     fetchData();
   }, []);
-
-  // console.log(movies[0].Title)
 
   function handleLoveClick() {
     console.log("Love button clicked");
@@ -51,8 +51,8 @@ export default function Home() {
 
   return (
     <div className="Home" style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "white" }}>
-      {/* Logo */}
-      <Logo />
+      {/* Movie Poster */}
+      <img src={imageURL} alt="movie poster" style={{ maxWidth: "100%", maxHeight: "80vh" }} />
 
       {/* Two Buttons */}
       <div style={{ display: "flex", flexDirection: "row", marginTop: "6rem" }}>
@@ -63,7 +63,7 @@ export default function Home() {
         <Button icon="♥" color="#4CAF50" onClick={handleXClick} radius="80%" width="100px" />
       </div>
       <div style={{ marginBottom: "1rem" }} />
-      { /* menu bar  <div style={{ marginRight: "7rem" }} />or the bottom */}
+      {/* Menu Bar at the bottom */}
       <Bar />
     </div>
   );
