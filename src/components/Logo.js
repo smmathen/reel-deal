@@ -1,6 +1,5 @@
 import React from "react";
 import ReelDealLogo from "../../public/ReelDeal.png";
-
 import Image from "next/image";
 
 function Logo() {
@@ -18,6 +17,4 @@ function Logo() {
     );
 }
 
-
 export default Logo;
-
