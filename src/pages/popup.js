@@ -6,7 +6,7 @@ import Bar from "../components/Bar"
 import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
-
+//change
 export default function Join() {
   return (
     <div className="Home" style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
