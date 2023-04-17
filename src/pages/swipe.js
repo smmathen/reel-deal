@@ -30,6 +30,7 @@ const Button = ({ color, icon, onClick, radius, width }) => {
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [imageURL, setImageURL] = useState("");
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,11 +44,13 @@ export default function Home() {
   }, []);
 
   function handleLoveClick() {
-    console.log("Love button clicked");
+    setIndex(index => (index + 1) % movies.length);
+    setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
   }
 
   function handleXClick() {
-    console.log("X button clicked");
+    setIndex(index => (index + 1) % movies.length);
+    setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
   }
 
   return (
