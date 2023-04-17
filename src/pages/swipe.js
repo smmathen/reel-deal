@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../components/Logo";
 import Bar from "../components/Bar"
 import { useState, useEffect } from "react";
+import Card from '../components/Card';
 
 const Button = ({ color, icon, onClick, radius, width }) => {
   return (
@@ -50,21 +51,26 @@ export default function Home() {
   }
 
   return (
-    <div className="Home" style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "white" }}>
-      {/* Logo */}
-      <Logo />
+    <div>
+      <div className="Home" style={{ height: "100vh", width: "75vw", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "white" }}>
+        {/* Logo */}
+        <Logo />
 
-      {/* Two Buttons */}
-      <div style={{ display: "flex", flexDirection: "row", marginTop: "6rem" }}>
-        {/* Heart Button */}
-        <Button icon="x" color="#F0080A" onClick={handleLoveClick} radius="70%" width="100px" />
-        <div style={{ marginRight: "7rem" }} />
-        {/* X Button */}
-        <Button icon="♥" color="#4CAF50" onClick={handleXClick} radius="80%" width="100px" />
+        <Card />
+
+        {/* Two Buttons */}
+          <div style={{ display: "flex", flexDirection: "row", marginTop: "2rem" }}>
+            {/* X Button */}
+            <Button icon="x" color="#F0080A" onClick={handleXClick} radius="70%" width="100px" />
+          <div style={{ marginRight: "7rem" }} />
+            {/* Heart Button */}
+            <Button icon="♥" color="#4CAF50" onClick={handleLoveClick} radius="80%" width="100px" />
+        </div>
+        <div style={{ marginBottom: "1rem" }} />
+        { /* menu bar  <div style={{ marginRight: "7rem" }} />or the bottom */}
+          <Bar />
       </div>
-      <div style={{ marginBottom: "1rem" }} />
-      { /* menu bar  <div style={{ marginRight: "7rem" }} />or the bottom */}
-      <Bar />
     </div>
+
   );
 }

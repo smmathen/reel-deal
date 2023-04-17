@@ -4,7 +4,7 @@ import Image from "next/image";
 
 function Logo() {
     return (
-        <div style={{ maxWidth: "100%", height: "auto", margin: '5em' }}>
+        <div style={{height: "20%", margin: '.5em', alignContent:"center", justifyContent:"center"}}>
             <Image
                 src={ReelDealLogo}
                 alt="Reel Deal Logo"
