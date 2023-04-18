@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import Details from "../pages/details";
+import Details from "../components/Details";
 
 function Card(props) {
     const [isFlipped, setIsFlipped] = useState(false);
@@ -31,7 +31,7 @@ function Card(props) {
                 )}
                 {isFlipped && (
                     <div>
-                        <Details />
+                        <Details index={props.index} movies={movies} />
                     </div>
                 )}
             </div>
