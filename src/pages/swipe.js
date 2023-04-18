@@ -58,7 +58,10 @@ export default function Home() {
       {/* Logo */}
       <Logo />
       {/* Movie Poster */}
-      <img src={imageURL} alt="movie poster" style={{ maxWidth: "100%", maxHeight: "80vh" }} />
+      {/* <img src={imageURL} alt="movie poster" style={{ maxWidth: "100%", maxHeight: "20vh" }} /> */}
+
+      {/* Card Component */}
+        <Card index={index} /> 
 
       {/* Two Buttons */}
       <div style={{ display: "flex", flexDirection: "row", marginTop: "6rem" }}>
