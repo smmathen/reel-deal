@@ -56,15 +56,15 @@ export default function Home() {
   return (
     <div className="Home" style={{ height: "100vh", width: "75vw", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "white" }}>
       {/* Logo */}
-      <Logo />
+      
       {/* Movie Poster */}
       {/* <img src={imageURL} alt="movie poster" style={{ maxWidth: "100%", maxHeight: "20vh" }} /> */}
 
       {/* Card Component */}
-        <Card index={index} /> 
+        <Card index={index} style={{height: "60%"}}/> 
 
       {/* Two Buttons */}
-      <div style={{ display: "flex", flexDirection: "row", marginTop: "6rem" }}>
+      <div style={{ display: "flex", flexDirection: "row" }}>
         {/* Heart Button */}
         <Button icon="x" color="#F0080A" onClick={handleLoveClick} radius="70%" width="100px" />
         <div style={{ marginRight: "7rem" }} />

@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import Details from "../components/Details";
+import Logo from "../components/Logo";
 
 function Card(props) {
     const [isFlipped, setIsFlipped] = useState(false);
@@ -22,11 +23,13 @@ function Card(props) {
     };
 
     return (
-        <div className ="card" onClick={handleClick} style={{height: "40%"}}>
-            <div>
+        <div className ="card" onClick={handleClick}>
                 {!isFlipped && (
-                    <div>
-                        <img src={imageURL} alt="movie poster" style={{marginTop: "8vh", width:"250px"}} />
+                    <div style={{height:"100%"}}>
+                        <Logo/>
+                        <div style={{display:"flex", justifyContent: "center", alignItems: "center"}}>
+                        <img src={imageURL} alt="movie poster" style={{ width:"250px"}} />
+                        </div>
                     </div>
                 )}
                 {isFlipped && (
@@ -34,7 +37,6 @@ function Card(props) {
                         <Details index={props.index} movies={movies} />
                     </div>
                 )}
-            </div>
         </div>
     );
 }
