@@ -16,4 +16,5 @@ export default async function handler(req, res) {
   });
 
   res.json({ message: "completed" });
+  console.log("message received by pusher index.js");
 }
