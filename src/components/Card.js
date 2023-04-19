@@ -26,7 +26,7 @@ function Card(props) {
             <div>
                 {!isFlipped && (
                     <div>
-                        <img src={imageURL} alt="movie poster" style={{width:"250px"}} />
+                        <img src={imageURL} alt="movie poster" style={{marginTop: "8vh", width:"250px"}} />
                     </div>
                 )}
                 {isFlipped && (
