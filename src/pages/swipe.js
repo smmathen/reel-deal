@@ -61,17 +61,17 @@ export default function Home() {
       {/* <img src={imageURL} alt="movie poster" style={{ maxWidth: "100%", maxHeight: "20vh" }} /> */}
 
       {/* Card Component */}
-        <Card index={index} style={{height: "60%"}}/> 
+        <Card index={index} style={{height: "40%"}}/> 
 
       {/* Two Buttons */}
       <div style={{ display: "flex", flexDirection: "row" }}>
-        {/* Heart Button */}
+        {/* X Button */}
         <Button icon="x" color="#F0080A" onClick={handleLoveClick} radius="70%" width="100px" />
         <div style={{ marginRight: "7rem" }} />
-        {/* X Button */}
+        {/* Heart Button */}
         <Button icon="♥" color="#4CAF50" onClick={handleXClick} radius="80%" width="100px" />
       </div>
-      <div style={{ marginBottom: "1rem" }} />
+      <div />
       { /* menu bar  <div style={{ marginRight: "7rem" }} />or the bottom */}
       <Bar />
     </div>
