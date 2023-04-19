@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../components/Logo";
 import Bar from "../components/Bar"
 import { useState, useEffect } from "react";
+import Card from '../components/Card';
 
 const Button = ({ color, icon, onClick, radius, width }) => {
   return (
@@ -53,9 +54,14 @@ export default function Home() {
   }
 
   return (
-    <div className="Home" style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "white" }}>
+    <div className="Home" style={{ height: "100vh", width: "75vw", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "white" }}>
+      {/* Logo */}
+      <Logo />
       {/* Movie Poster */}
-      <img src={imageURL} alt="movie poster" style={{ maxWidth: "100%", maxHeight: "80vh" }} />
+      {/* <img src={imageURL} alt="movie poster" style={{ maxWidth: "100%", maxHeight: "20vh" }} /> */}
+
+      {/* Card Component */}
+        <Card index={index} /> 
 
       {/* Two Buttons */}
       <div style={{ display: "flex", flexDirection: "row", marginTop: "6rem" }}>
@@ -66,7 +72,7 @@ export default function Home() {
         <Button icon="♥" color="#4CAF50" onClick={handleXClick} radius="80%" width="100px" />
       </div>
       <div style={{ marginBottom: "1rem" }} />
-      {/* Menu Bar at the bottom */}
+      { /* menu bar  <div style={{ marginRight: "7rem" }} />or the bottom */}
       <Bar />
     </div>
   );

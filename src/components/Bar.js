@@ -8,12 +8,13 @@ const Bar = ({ color, radius, width }) => {
         color: "white",
         display: "flex",
         justifyContent: "space-between",
-        padding: "1rem",
+        paddingTop: "1rem",
+        paddingBottom: "1.2rem",
         justifyContent: "center",
         bottom: 0,
         left: 0,
-        width: "350px",
-        height: "100px",
+        width: "100%",
+        height: "60px",
         borderRadius: radius,
       }}
     >
