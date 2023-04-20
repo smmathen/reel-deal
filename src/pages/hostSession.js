@@ -7,6 +7,13 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Session() {
     const [sessionId, setSessionID] = useState(111111);
     useEffect(() => setSessionID(Math.floor(Math.random() * 90000) + 10000), [])
+
+    useEffect(() => {
+        sessionStorage.setItem('sessionId', sessionId);
+    }, [sessionId]);
+    // TODO: Create new document in session database
+
+    // TODO: Add user to session database
     return (
         <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white" }}>
             <div style={{ position: "relative", top: "10%", fontSize: "300%" }}>

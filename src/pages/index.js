@@ -19,7 +19,7 @@ export default function Home() {
                     radius="10%"
                     width="400px"
                 >
-                    <a href="http://localhost:3000/start"> Start </a>
+                    <a href="/start"> Start </a>
                 </StartButton>
             </div>
         </div>
