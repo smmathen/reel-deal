@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google'
 import Ticket from '../components/Ticket'
 import { useEffect, useState } from 'react'
-const { addSession } = require("../../session")
+// const { addSession } = require("../../session")
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,29 +11,30 @@ export default function Session() {
 
     useEffect(() => {
         sessionStorage.setItem('sessionId', sessionId);
+        const storedName = window.sessionStorage.getItem('name');
+    
+        // Make a POST request to add the session
+        fetch('/api/addSession', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            sessionId,
+            storedName,
+          }),
+        });
+        console.log("addSession called")
     }, [sessionId]);
+    
 
-    const storedName = window.sessionStorage.getItem('name');
-    addSession(sessionId, storedName);
-    // const addUserToSession = async () => {
-
-    //     const res = await fetch('/api/session', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({
-    //             sessionId: sessionId,
-    //             name: storedName,
-    //         }),
-    //     });
-    //     const data = await res.json();
-    //     console.log(data);
-    // };
 
     // useEffect(() => {
-    //     addUserToSession();
-    // }, []);
+    //     sessionStorage.setItem('sessionId', sessionId);
+    // }, [sessionId]);
+
+    // const storedName = window.sessionStorage.getItem('name');
+    // // addSession(sessionId, storedName);
 
     return (
         <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white" }}>

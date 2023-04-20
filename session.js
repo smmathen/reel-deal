@@ -1,6 +1,6 @@
 // const { MongoClient } = require('mongodb');
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '.env.local') });
+// const path = require('path');
+// require('dotenv').config({ path: path.join(__dirname, '.env.local') });
 
 // if (!process.env.MONGODB_URI) {
 //     throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
@@ -95,6 +95,5 @@ const addSession = async (sessionId, storedName) => {
     });
 };
 
-addSession('23455', 'Shawn');
-// module.exports = { addSession };
+module.exports = { addSession };
 
