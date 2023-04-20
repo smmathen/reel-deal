@@ -25,21 +25,20 @@ const Button = ({ color, icon, onClick, radius, width }) => {
     );
   };
 
-function Card(props) {
+function Card() {
     const [isFlipped, setIsFlipped] = useState(false);
     const [movies, setMovies] = useState([]);
     const [imageURL, setImageURL] = useState("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("./movies.json");
-      const data = await response.json();
-      setMovies(data);
-      setImageURL(data[props.index].Image_Poster_Link);
-    };
-
-    fetchData();
-  }, [props]);
+    const [index, setIndex] = useState(0);
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch("./movies.json");
+            const data = await response.json();
+            setMovies(data);
+            setImageURL(data[index].Image_Poster_Link);
+        };
+        fetchData();
+    }, []);
 
     const handleClick = () => {
         setIsFlipped(!isFlipped);
@@ -56,7 +55,8 @@ function Card(props) {
     }
 
     return (
-        <div className ="card" onClick={handleClick}>
+        <div>
+            <div className ="card" onClick={handleClick}>
                 {!isFlipped && (
                     <div style={{height:"100%"}}>
                         {/* Logo */}
@@ -66,7 +66,16 @@ function Card(props) {
                         <div style={{display:"flex", justifyContent: "center", alignItems: "center"}}>
                         <img src={imageURL} alt="movie poster" style={{marginTop: "3vh", width:"250px"}} />
                         </div>
-
+                    </div>
+                )}
+                {isFlipped && (
+                    <div style={{height:"100%"}}>
+                        <Details index={index} movies={movies} />
+                    </div>
+                )}
+            </div>
+            {!isFlipped && (
+                    <div style={{height:"100%"}}>
                         {/* Two Buttons */}
                         <div style={{ display:"flex", justifyContent: "center", alignItems: "center"}}>
                             {/* X Button */}
@@ -78,8 +87,8 @@ function Card(props) {
                     </div>
                 )}
                 {isFlipped && (
-                    <div>
-                        <Details index={props.index} movies={movies} />
+                    <div style={{height:"100%"}}>
+                        
                     </div>
                 )}
         </div>
