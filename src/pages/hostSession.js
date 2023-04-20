@@ -1,13 +1,18 @@
 import { Inter } from 'next/font/google'
 import Ticket from '../components/Ticket'
 import { useEffect, useState } from 'react'
-// const { addSession } = require("../../session")
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Session() {
+    const [sessionId, setSessionId] = useState('')
 
-    const sessionId = window.sessionStorage.getItem('sessionId');
+    useEffect(() => {
+        const sessionId = window.sessionStorage.getItem('sessionId');
+        if (sessionId) {
+            setSessionId(sessionId);
+        }
+    }, [])
 
     return (
         <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white" }}>
