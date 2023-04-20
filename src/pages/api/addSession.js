@@ -1,3 +1,4 @@
+const cors = require('cors');
 const { addSession } = require('../../../session');
 
 // export default async function handler(req, res) {
@@ -12,6 +13,7 @@ const { addSession } = require('../../../session');
 //   }
   
 export default async function handler(req, res) {
+    await cors()(req, res);
     console.log("api call running")
     const { sessionId, storedName } = req.body;
   
