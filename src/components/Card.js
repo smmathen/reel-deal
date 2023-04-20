@@ -2,6 +2,29 @@ import React, {useState, useEffect } from 'react';
 import Details from "../components/Details";
 import Logo from "../components/Logo";
 
+const Button = ({ color, icon, onClick, radius, width }) => {
+    return (
+      <button
+        onClick={onClick}
+        style={{
+          backgroundColor: color,
+          color: "#ffffff",
+          border: "none",
+          borderRadius: radius,
+          height: "80px",
+          width: width,
+          fontSize: "2.5rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: "1rem",
+        }}
+      >
+        {icon}
+      </button>
+    );
+  };
+
 function Card(props) {
     const [isFlipped, setIsFlipped] = useState(false);
     const [movies, setMovies] = useState([]);
@@ -22,13 +45,35 @@ function Card(props) {
         setIsFlipped(!isFlipped);
     };
 
+    function handleLoveClick() {
+        setIndex(index => (index + 1) % movies.length);
+        setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
+    }
+
+    function handleXClick() {
+        setIndex(index => (index + 1) % movies.length);
+        setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
+    }
+
     return (
         <div className ="card" onClick={handleClick}>
                 {!isFlipped && (
                     <div style={{height:"100%"}}>
+                        {/* Logo */}
                         <Logo/>
+
+                        {/* Movie Poster */}
                         <div style={{display:"flex", justifyContent: "center", alignItems: "center"}}>
                         <img src={imageURL} alt="movie poster" style={{marginTop: "3vh", width:"250px"}} />
+                        </div>
+
+                        {/* Two Buttons */}
+                        <div style={{ display:"flex", justifyContent: "center", alignItems: "center"}}>
+                            {/* X Button */}
+                            <Button icon="x" color="#F0080A" onClick={handleLoveClick} radius="70%" width="100px" />
+                            <div style={{ marginRight: "7rem" }} />
+                            {/* Heart Button */}
+                            <Button icon="♥" color="#4CAF50" onClick={handleXClick} radius="80%" width="100px" />
                         </div>
                     </div>
                 )}
