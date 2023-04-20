@@ -14,8 +14,27 @@ export default function Start() {
             alert('Please enter your name');
             event.preventDefault();
         } else {
+            // create session id
+            const sessionId = Math.floor(Math.random() * 90000) + 10000
+            sessionStorage.setItem('sessionId', sessionId);
+
             // Set the user's name in sessionStorage
             sessionStorage.setItem('name', name);
+            const storedName = window.sessionStorage.getItem('name');
+
+            // Make a POST request to add the session
+            fetch('/api/addSession', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                sessionId,
+                storedName,
+                }),
+            });
+            console.log("addSession called")
+
             // Redirect to /hostSession
             router.push('/hostSession');
         }
