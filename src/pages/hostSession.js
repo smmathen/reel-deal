@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import Ticket from '../components/Ticket'
 import { useEffect, useState } from 'react'
+const { addSession } = require("../../session")
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,9 +12,29 @@ export default function Session() {
     useEffect(() => {
         sessionStorage.setItem('sessionId', sessionId);
     }, [sessionId]);
-    // TODO: Create new document in session database
 
-    // TODO: Add user to session database
+    const storedName = window.sessionStorage.getItem('name');
+    addSession(sessionId, storedName);
+    // const addUserToSession = async () => {
+
+    //     const res = await fetch('/api/session', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({
+    //             sessionId: sessionId,
+    //             name: storedName,
+    //         }),
+    //     });
+    //     const data = await res.json();
+    //     console.log(data);
+    // };
+
+    // useEffect(() => {
+    //     addUserToSession();
+    // }, []);
+
     return (
         <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white" }}>
             <div style={{ position: "relative", top: "10%", fontSize: "300%" }}>
