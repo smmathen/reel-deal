@@ -12,6 +12,8 @@ export default function Join() {
     const storedName = window.sessionStorage.getItem('name');
 
     const joinSession = async () => {
+        window.sessionStorage.setItem('sessionId', sessionId);
+
         const response = await fetch('/api/joinSession', {
             method: 'POST',
             headers: {
@@ -32,6 +34,7 @@ export default function Join() {
 
     const handleSessionIdChange = (event) => {
         setSessionId(event.target.value);
+        window.sessionStorage.setItem('sessionId', sessionId);
     };
 
     return (

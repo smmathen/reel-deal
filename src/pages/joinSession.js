@@ -4,6 +4,8 @@ import Ticket from '../components/Ticket'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Session() {
+    const sessionId = window.sessionStorage.getItem('sessionId');
+
     return (
         <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white" }}>
             <div style={{ position: "relative", top: "10%", fontSize: "300%" }}>
@@ -13,7 +15,7 @@ export default function Session() {
                         Session Code:
                     </p>
                     <p style={{ position: "absolute", top: "45%", fontSize: "100%", left: "35%" }}>
-                        {window.sessionStorage.getItem('sessionId')}
+                        {sessionId}
                     </p>
                 </div>
             </div>
