@@ -5,23 +5,23 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Session() {
     return (
-        <div style = {{height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white"}}> 
-            <div style = {{position: "relative", top: "10%", fontSize: "300%"}}>
+        <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white" }}>
+            <div style={{ position: "relative", top: "10%", fontSize: "300%" }}>
                 <Ticket />
                 <div>
-                    <p style = {{position: "absolute", top: "25%", fontSize: "100%", left: "20%"}}>
+                    <p style={{ position: "absolute", top: "25%", fontSize: "100%", left: "20%" }}>
                         Session Code:
                     </p>
-                    <p style = {{position: "absolute", top: "45%", fontSize: "100%", left: "35%"}}>
-                        JF2!D
+                    <p style={{ position: "absolute", top: "45%", fontSize: "100%", left: "35%" }}>
+                        {window.sessionStorage.getItem('sessionId')}
                     </p>
                 </div>
             </div>
-            <div style = {{position: "relative", top: "10%"}}>
-                <p style = {{fontSize: "5vh"}}>
+            <div style={{ position: "relative", top: "10%" }}>
+                <p style={{ fontSize: "5vh" }}>
                     Movie Watchers:
                 </p>
-                <ul style = {{fontSize: "4vh"}}>
+                <ul style={{ fontSize: "4vh" }}>
                     <li> Sean</li>
                     <li> Shawn</li>
                     <li> Shaun</li>

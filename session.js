@@ -86,7 +86,7 @@ const connectDB = async () => {
 
 const addSession = async (sessionId, storedName) => {
     const { sessionCollection, client } = await connectDB();
-    const myobj = { code: sessionId, users: [storedName] };
+    const myobj = { _id: sessionId, users: [storedName] };
 
     await sessionCollection.insertOne(myobj, (err, res) => {
         if (err) throw err;
@@ -95,5 +95,25 @@ const addSession = async (sessionId, storedName) => {
     });
 };
 
-module.exports = { addSession };
+
+const joinExistingSession = async (sessionId, storedName) => {
+    const { sessionCollection, client } = await connectDB();
+    const myobj = { _id: sessionId, users: [storedName] };
+
+    try {
+        const result = await sessionCollection.updateOne(
+            { _id: sessionId },
+            { $push: { users: storedName } }
+        );
+
+        console.log(`${result.matchedCount} document(s) matched the query criteria.`);
+        console.log(`${result.modifiedCount} document(s) was/were updated.`);
+    } catch (err) {
+        console.error(err);
+    } finally {
+        client.close();
+    }
+};
+
+module.exports = { addSession, joinExistingSession };
 

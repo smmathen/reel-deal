@@ -6,6 +6,25 @@ import styles from '@/styles/Home.module.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Join() {
+
+    const joinSession = () => {
+        fetch('/api/joinSession', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                sessionId,
+                storedName,
+            }),
+        });
+
+        console.log("joinSession called")
+
+        // Redirect to /hostSession
+        router.push('/joinSession');
+    };
+
     return (
         <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white" }}>
             <h1 style={{ marginTop: "10vh", marginBottom: "5vh", fontSize: "10vh" }}> Join Session </h1>
