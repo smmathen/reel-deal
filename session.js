@@ -86,7 +86,7 @@ const connectDB = async () => {
 
 const addSession = async (sessionId, storedName) => {
     const { sessionCollection, client } = await connectDB();
-    const myobj = { code: sessionId, users: [storedName] };
+    const myobj = { _id: sessionId, users: [storedName] };
 
     await sessionCollection.insertOne(myobj, (err, res) => {
         if (err) throw err;
