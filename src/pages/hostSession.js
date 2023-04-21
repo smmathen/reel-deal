@@ -1,17 +1,18 @@
 import { Inter } from 'next/font/google'
 import Ticket from '../components/Ticket'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Session() {
     const [sessionId, setSessionId] = useState('')
     const [users, setUsers] = useState([]);
-    const [started, setStarted] = useState(false);
-
+    const router = useRouter();
 
     useEffect(() => {
-        const fetchUsers = () => {
+        // Make a GET request to retrieve the session data
+        const interval = setInterval(() => {
             fetch('/api/getUsersInSession', {
                 method: 'POST',
                 headers: {
@@ -23,22 +24,16 @@ export default function Session() {
             })
                 .then(response => response.json())
                 .then(data => {
-
+                    console.log("users available:", data.users)
                     // Set the state with the users data
-                    // setUsers(data[0]?.users ?? []);
                     setUsers(data.users);
                 })
                 .catch(error => {
                     console.error(error);
                 });
-        };
+        }, 3500); // 3.5 seconds
 
-        // Call the fetchUsers function every 5 seconds
-        const intervalId = setInterval(fetchUsers, 3500);
-
-        return () => {
-            clearInterval(intervalId);
-        }
+        return () => clearInterval(interval);
     }, [sessionId]);
 
     useEffect(() => {
@@ -48,9 +43,8 @@ export default function Session() {
         }
     }, [])
 
-    const handleStartClick = () => {
-        // Set the started state to true
-        setStarted(true);
+    const handleStart = () => {
+        router.push('/swipe');
     }
 
     return (
@@ -75,7 +69,7 @@ export default function Session() {
                         <li key={user}>{user}</li>
                     ))}
                 </ul>
-                {started ? null : <button onClick={handleStartClick} style={{ marginTop: '2rem' }}>Start</button>}
+                <button onClick={handleStart}>Start</button>
             </div>
         </div>
     )
