@@ -13,17 +13,17 @@ export default function Session() {
         fetch('/api/getUsersInSession', {
             method: 'POST',
             headers: {
-            'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-            sessionId
+                sessionId
             }),
         })
             .then(response => response.json())
             .then(data => {
-                console.log("users available:", data.users)
                 // Set the state with the users data
                 // setUsers(data[0]?.users ?? []);
+                setUsers(data.users);
             })
             .catch(error => {
                 console.error(error);

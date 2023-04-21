@@ -119,15 +119,14 @@ const getUsersInSession = async (sessionId) => {
     const { sessionCollection, client } = await connectDB();
 
     try {
-        console.log("finding doc with sessionId: ", sessionId)
+
+        var intID = parseInt(sessionId);
         // const result = await sessionCollection.findOne({ _id: sessionId });
         // const query = { _id: sessionId };
         // const result = await sessionCollection.find(query).toArray();
         // const result = await sessionCollection.find().toArray();
-        const result = await sessionCollection.find({_id: 70781}).toArray();
+        const result = await sessionCollection.find({ _id: intID }).toArray();
 
-        console.log("result: ", result);
-        console.log("result[0].users: ", result[0].users);
         if (result) {
             return result[0].users;
         } else {
