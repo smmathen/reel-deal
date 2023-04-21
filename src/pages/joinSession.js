@@ -2,8 +2,6 @@ import { Inter } from 'next/font/google'
 import Ticket from '../components/Ticket'
 import React, { useState, useEffect } from 'react';
 
-
-
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Session() {
@@ -11,16 +9,25 @@ export default function Session() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        async function fetchUsers() {
-            try {
-                const response = await fetch(`/api/getUsersInSession?sessionId=${sessionId}`);
-                const data = await response.json();
-                setUsers(data.usersList);
-            } catch (error) {
+        // Make a GET request to retrieve the session data
+        fetch('/api/getUsersInSession', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+            sessionId
+            }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("users available:", data.users)
+                // Set the state with the users data
+                // setUsers(data[0]?.users ?? []);
+            })
+            .catch(error => {
                 console.error(error);
-            }
-        }
-        fetchUsers();
+            });
     }, [sessionId]);
 
     return (
