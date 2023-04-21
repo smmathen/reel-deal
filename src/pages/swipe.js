@@ -44,6 +44,29 @@ export default function Home() {
   }, []);
 
   function handleLoveClick() {
+
+    const likedMovie = async () => {
+      sessionId = window.sessionStorage.getItem('sessionId');
+
+      const response = await fetch('/api/addLikedMovie', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sessionId: parseInt(sessionId),
+          index,
+        }),
+      });
+
+      if (response.ok) {
+        router.push('/joinSession');
+      } else {
+        console.error('Failed to join session');
+      }
+    };
+
+
     setIndex(index => (index + 1) % movies.length);
     setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
   }
@@ -56,12 +79,12 @@ export default function Home() {
   return (
     <div className="Home" style={{ height: "100vh", width: "75vw", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "white" }}>
       {/* Logo */}
-      
+
       {/* Movie Poster */}
       {/* <img src={imageURL} alt="movie poster" style={{ maxWidth: "100%", maxHeight: "20vh" }} /> */}
 
       {/* Card Component */}
-        <Card index={index} style={{height: "40%"}}/> 
+      <Card index={index} style={{ height: "40%" }} />
 
       {/* Two Buttons */}
       <div style={{ display: "flex", flexDirection: "row" }}>

@@ -1,12 +1,15 @@
 import { Inter } from 'next/font/google'
 import Ticket from '../components/Ticket'
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Session() {
     const sessionId = window.sessionStorage.getItem('sessionId');
     const [users, setUsers] = useState([]);
+    const router = useRouter();
 
     useEffect(() => {
         // Make a GET request to retrieve the session data
@@ -30,6 +33,10 @@ export default function Session() {
             });
     }, [sessionId]);
 
+    const handleStart = () => {
+        router.push('/swipe');
+    }
+
     return (
         <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white" }}>
             <div style={{ position: "relative", top: "10%", fontSize: "300%" }}>
@@ -52,6 +59,7 @@ export default function Session() {
                         <li key={user}>{user}</li>
                     ))}
                 </ul>
+                <button onClick={handleStart}>Start</button>
             </div>
         </div>
     )

@@ -86,7 +86,7 @@ const connectDB = async () => {
 
 const addSession = async (sessionId, storedName) => {
     const { sessionCollection, client } = await connectDB();
-    const myobj = { _id: sessionId, users: [storedName] };
+    const myobj = { _id: sessionId, users: [storedName], movies: Array(51).fill(0) };
 
     await sessionCollection.insertOne(myobj, (err, res) => {
         if (err) throw err;
@@ -94,6 +94,33 @@ const addSession = async (sessionId, storedName) => {
         client.close();
     });
 };
+
+
+const addLikedMovie = async (sessionId, index) => {
+    const { sessionCollection, client } = await connectDB();
+    let agreedOn = false;
+    try {
+        const session = await sessionCollection.findOne({ _id: sessionId });
+        if (!session) {
+            console.log(`Session ${sessionId} not found.`);
+            return;
+        }
+        const updatedMovies = [...session.movies];
+        updatedMovies[index] += 1;
+        await sessionCollection.updateOne({ _id: sessionId }, { $set: { movies: updatedMovies } });
+        console.log(`Liked movie updated for session ${sessionId}.`);
+        if (updatedMovies.length >= 2) {
+            client.close();
+            agreedOn = true;
+        }
+    } catch (error) {
+        console.error(error);
+    } finally {
+        client.close();
+        return agreedOn;
+    }
+};
+
 
 
 const joinExistingSession = async (sessionId, storedName) => {
@@ -142,5 +169,5 @@ const getUsersInSession = async (sessionId) => {
 
 
 
-module.exports = { addSession, joinExistingSession, getUsersInSession };
+module.exports = { addSession, joinExistingSession, getUsersInSession, addLikedMovie };
 
