@@ -1,10 +1,27 @@
 import { Inter } from 'next/font/google'
 import Ticket from '../components/Ticket'
+import React, { useState, useEffect } from 'react';
+
+
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Session() {
     const sessionId = window.sessionStorage.getItem('sessionId');
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        async function fetchUsers() {
+            try {
+                const response = await fetch(`/api/getUsersInSession?sessionId=${sessionId}`);
+                const data = await response.json();
+                setUsers(data.usersList);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchUsers();
+    }, [sessionId]);
 
     return (
         <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white" }}>
@@ -24,10 +41,9 @@ export default function Session() {
                     Movie Watchers:
                 </p>
                 <ul style={{ fontSize: "4vh" }}>
-                    <li> Sean</li>
-                    <li> Shawn</li>
-                    <li> Shaun</li>
-                    <li> Shawne</li>
+                    {users.map((user) => (
+                        <li key={user}>{user}</li>
+                    ))}
                 </ul>
             </div>
         </div>

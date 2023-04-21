@@ -115,5 +115,26 @@ const joinExistingSession = async (sessionId, storedName) => {
     }
 };
 
-module.exports = { addSession, joinExistingSession };
+const getUsersInSession = async (sessionId) => {
+    const { sessionCollection, client } = await connectDB();
+
+    try {
+        const result = await sessionCollection.findOne({ _id: sessionId });
+
+        if (result) {
+            return result.users;
+        } else {
+            return [];
+        }
+    } catch (err) {
+        console.error(err);
+        return [];
+    } finally {
+        client.close();
+    }
+};
+
+
+
+module.exports = { addSession, joinExistingSession, getUsersInSession };
 
