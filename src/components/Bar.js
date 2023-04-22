@@ -30,7 +30,7 @@ const Bar = ({ color, radius, width }) => {
       <div style={{ marginRight: "2rem" }} />
       <div style={{ display: "flex", alignItems: "center" }}>
         <i className="fas fa-cog" style={{ fontSize: "2rem", marginRight: "1rem" }}></i>
-        <span style={{ fontSize: "5rem" }}>⚙️</span>
+        <span style={{ fontSize: "4rem" }}>⚙️</span>
       </div>
     </div>
   );

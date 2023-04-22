@@ -44,6 +44,35 @@ export default function Home() {
   }, []);
 
   function handleLoveClick() {
+
+    const likedMovie = async () => {
+      console.log("YOU LIKED A MOVIE")
+      const sessionId = window.sessionStorage.getItem('sessionId');
+
+      fetch('/api/addLikedMovie', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sessionId: parseInt(sessionId),
+          index,
+        }),
+      }).then(response => response.json())
+        .then(data => {
+          console.log("Response data: ", data);
+
+          if (data.agreedOn) {
+            alert("Both people have selected this movie!");
+          }
+        });
+
+
+
+    };
+
+    likedMovie();
+
     setIndex(index => (index + 1) % movies.length);
     setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
   }
@@ -56,22 +85,22 @@ export default function Home() {
   return (
     <div className="Home" style={{ height: "100vh", width: "75vw", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "white" }}>
       {/* Logo */}
-      
+
       {/* Movie Poster */}
       {/* <img src={imageURL} alt="movie poster" style={{ maxWidth: "100%", maxHeight: "20vh" }} /> */}
 
       {/* Card Component */}
-        <Card index={index} style={{height: "60%"}}/> 
+      <Card index={index} style={{ height: "40%" }} />
 
       {/* Two Buttons */}
       <div style={{ display: "flex", flexDirection: "row" }}>
-        {/* Heart Button */}
-        <Button icon="x" color="#F0080A" onClick={handleLoveClick} radius="70%" width="100px" />
-        <div style={{ marginRight: "7rem" }} />
         {/* X Button */}
-        <Button icon="♥" color="#4CAF50" onClick={handleXClick} radius="80%" width="100px" />
+        <Button icon="x" color="#F0080A" onClick={handleXClick} radius="70%" width="100px" />
+        <div style={{ marginRight: "7rem" }} />
+        {/* Heart Button */}
+        <Button icon="♥" color="#4CAF50" onClick={handleLoveClick} radius="80%" width="100px" />
       </div>
-      <div style={{ marginBottom: "1rem" }} />
+      <div />
       { /* menu bar  <div style={{ marginRight: "7rem" }} />or the bottom */}
       <Bar />
     </div>

@@ -28,7 +28,7 @@ function Card(props) {
                     <div style={{height:"100%"}}>
                         <Logo/>
                         <div style={{display:"flex", justifyContent: "center", alignItems: "center"}}>
-                        <img src={imageURL} alt="movie poster" style={{ width:"250px"}} />
+                        <img src={imageURL} alt="movie poster" style={{marginTop: "3vh", width:"250px"}} />
                         </div>
                     </div>
                 )}
