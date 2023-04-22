@@ -105,12 +105,17 @@ const addLikedMovie = async (sessionId, index) => {
             console.log(`Session ${sessionId} not found.`);
             return;
         }
-        const updatedMovies = [...session.movies];
+        var intID = parseInt(sessionId);
+        const result = await sessionCollection.find({ _id: intID }).toArray();
+        const updatedMovies = result[0].movies;
+        console.log(`movies list before: ${updatedMovies}`)
         updatedMovies[index] += 1;
+        console.log(`movies list after: ${updatedMovies}`)
         await sessionCollection.updateOne({ _id: sessionId }, { $set: { movies: updatedMovies } });
         console.log(`Liked movie updated for session ${sessionId}.`);
-        if (updatedMovies.length >= 2) {
-            client.close();
+        console.log("index is: ", index);
+        console.log("Value at index: ", updatedMovies[index]);
+        if (updatedMovies[index] >= 2) {
             agreedOn = true;
         }
     } catch (error) {

@@ -9,7 +9,8 @@ const inter = Inter({ subsets: ['latin'] });
 export default function Join() {
     const [sessionId, setSessionId] = useState('');
     const router = useRouter();
-    const storedName = window.sessionStorage.getItem('name');
+    const storedName = typeof window !== 'undefined' ? window.sessionStorage.getItem('name') : null;
+
 
     const joinSession = async () => {
         window.sessionStorage.setItem('sessionId', sessionId);

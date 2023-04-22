@@ -7,7 +7,8 @@ import { useRouter } from 'next/router';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Session() {
-    const sessionId = window.sessionStorage.getItem('sessionId');
+    const sessionId = typeof window !== 'undefined' ? window.sessionStorage.getItem('sessionId') : null;
+
     const [users, setUsers] = useState([]);
     const router = useRouter();
 

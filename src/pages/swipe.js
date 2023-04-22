@@ -46,9 +46,10 @@ export default function Home() {
   function handleLoveClick() {
 
     const likedMovie = async () => {
-      sessionId = window.sessionStorage.getItem('sessionId');
+      console.log("YOU LIKED A MOVIE")
+      const sessionId = window.sessionStorage.getItem('sessionId');
 
-      const response = await fetch('/api/addLikedMovie', {
+      fetch('/api/addLikedMovie', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,15 +58,28 @@ export default function Home() {
           sessionId: parseInt(sessionId),
           index,
         }),
-      });
+      }).then(response => response.json())
+        .then(data => {
+          console.log("data: ", data);
+        });
 
-      if (response.ok) {
-        router.push('/joinSession');
+      if (response.status === 200) {
+        const data = await response.json();
+        alert("AGREED ON IS ", data)
+        if (data.agreedOn === 'True') {
+
+          // agreedOn is true
+          alert("You both like this movie! Let's watch it together! :)")
+        } else {
+          // agreedOn is false
+          console.log("Movie added to your list!")
+        }
       } else {
         console.error('Failed to join session');
       }
     };
 
+    likedMovie();
 
     setIndex(index => (index + 1) % movies.length);
     setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
@@ -89,10 +103,10 @@ export default function Home() {
       {/* Two Buttons */}
       <div style={{ display: "flex", flexDirection: "row" }}>
         {/* X Button */}
-        <Button icon="x" color="#F0080A" onClick={handleLoveClick} radius="70%" width="100px" />
+        <Button icon="x" color="#F0080A" onClick={handleXClick} radius="70%" width="100px" />
         <div style={{ marginRight: "7rem" }} />
         {/* Heart Button */}
-        <Button icon="♥" color="#4CAF50" onClick={handleXClick} radius="80%" width="100px" />
+        <Button icon="♥" color="#4CAF50" onClick={handleLoveClick} radius="80%" width="100px" />
       </div>
       <div />
       { /* menu bar  <div style={{ marginRight: "7rem" }} />or the bottom */}
