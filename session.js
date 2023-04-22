@@ -152,8 +152,9 @@ const getAllLikedMovies = async (sessionId) => {
     const { sessionCollection, client } = await connectDB();
     try {
         var intID = parseInt(sessionId);
+        console.log("Session ID for getting all liked movies: ", intID)
         const result = await sessionCollection.find({ _id: intID }).toArray();
-        console.log(result)
+        console.log("Getting all liked movies: ", result)
         if (result) {
             const likedMoviesIndices = result[0].movies.reduce((acc, value, index) => {
                 if (value >= 2) {
