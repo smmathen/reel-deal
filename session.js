@@ -122,9 +122,10 @@ const addLikedMovie = async (sessionId, index) => {
         console.error(error);
     } finally {
         client.close();
-        return agreedOn;
     }
+    return agreedOn;
 };
+
 
 
 

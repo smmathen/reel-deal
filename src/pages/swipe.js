@@ -60,23 +60,15 @@ export default function Home() {
         }),
       }).then(response => response.json())
         .then(data => {
-          console.log("data: ", data);
+          console.log("Response data: ", data);
+
+          if (data.agreedOn) {
+            alert("Both people have selected this movie!");
+          }
         });
 
-      if (response.status === 200) {
-        const data = await response.json();
-        alert("AGREED ON IS ", data)
-        if (data.agreedOn === 'True') {
 
-          // agreedOn is true
-          alert("You both like this movie! Let's watch it together! :)")
-        } else {
-          // agreedOn is false
-          console.log("Movie added to your list!")
-        }
-      } else {
-        console.error('Failed to join session');
-      }
+
     };
 
     likedMovie();
