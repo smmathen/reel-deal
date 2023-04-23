@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Details from "../components/Details";
 import Logo from "../components/Logo";
-
+import { useRouter } from 'next/router'
 const Button = ({ color, icon, onClick, radius, width }) => {
     return (
         <button
@@ -30,6 +30,7 @@ function Card(props) {
     const [isFlipped, setIsFlipped] = useState(false);
     const [movies, setMovies] = useState([]);
     const [imageURL, setImageURL] = useState("");
+    const router = useRouter();
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch("./movies.json");
@@ -63,21 +64,27 @@ function Card(props) {
                     console.log("Response data: ", data);
 
                     if (data.agreedOn) {
-                        alert("Both people have selected this movie!");
+                        alert("Everyone has agreed on a movie!");
                     }
                 });
         };
 
         likedMovie();
-        setIndex(index => (index + 1) % movies.length);
+        setIndex(index => (index + 1));
+        if (index >= movies.length) {
+            router.push('/likedMovies')
+        }
         window.sessionStorage.setItem('index', index + 1);
         setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
     }
 
     function handleXClick() {
-        setIndex(index => (index + 1) % movies.length);
+        setIndex(index => (index + 1));
+        if (index >= movies.length) {
+            router.push('/likedMovies')
+        }
         window.sessionStorage.setItem('index', index + 1);
-        setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
+        setImageURL(movies[index + 1 % movies.length].Image_Poster_Link);
     }
 
 
