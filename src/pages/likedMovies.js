@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Bar from "../components/Bar"
 
 export default function LikedMovies() {
     const [movies, setMovies] = useState([])
@@ -124,6 +125,7 @@ export default function LikedMovies() {
                 text-align: center;
             }
           `}</style>
+            <Bar />
         </div>
     );
 

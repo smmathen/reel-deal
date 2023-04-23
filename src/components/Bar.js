@@ -4,8 +4,12 @@ import { useRouter } from 'next/router'
 const Bar = ({ color, radius, width }) => {
   const router = useRouter();
 
-  const handleMovieClick = () => {
+  const handleStarClick = () => {
     router.push("/likedMovies");
+  };
+
+  const handleMovieClick = () => {
+    router.push("/swipe");
   };
 
   return (
@@ -30,7 +34,7 @@ const Bar = ({ color, radius, width }) => {
         <span style={{ fontSize: "4rem" }}>🎬</span>
       </button>
       <div style={{ marginRight: "2rem" }} />
-      <button style={{ background: "none", border: "none", cursor: "pointer" }}>
+      <button style={{ background: "none", border: "none", cursor: "pointer" }} onClick={handleStarClick}>
         <i className="fas fa-star" style={{ fontSize: "2rem", marginRight: "1rem" }}></i>
         <span style={{ fontSize: "4rem" }}>⭐</span>
       </button>
