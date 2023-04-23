@@ -25,17 +25,17 @@ const Button = ({ color, icon, onClick, radius, width }) => {
     );
 };
 
-function Card() {
+function Card(props) {
+    const { index, setIndex } = props;
     const [isFlipped, setIsFlipped] = useState(false);
     const [movies, setMovies] = useState([]);
     const [imageURL, setImageURL] = useState("");
-    const [index, setIndex] = useState(0);
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch("./movies.json");
             const data = await response.json();
             setMovies(data);
-            setImageURL(data[index].Image_Poster_Link);
+            setImageURL(data[props.index].Image_Poster_Link);
         };
         fetchData();
     }, []);
@@ -45,7 +45,6 @@ function Card() {
     };
 
     function handleLoveClick() {
-
         const likedMovie = async () => {
             console.log("YOU LIKED A MOVIE")
             const sessionId = window.sessionStorage.getItem('sessionId');
@@ -70,13 +69,14 @@ function Card() {
         };
 
         likedMovie();
-        console.log("You liked movie at index ", index);
         setIndex(index => (index + 1) % movies.length);
+        window.sessionStorage.setItem('index', index + 1);
         setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
     }
 
     function handleXClick() {
         setIndex(index => (index + 1) % movies.length);
+        window.sessionStorage.setItem('index', index + 1);
         setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
     }
 
