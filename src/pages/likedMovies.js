@@ -10,21 +10,32 @@ export default function LikedMovies() {
     useEffect(() => {
         const sessionId = sessionStorage.getItem('sessionId')
 
-        // Fetch liked movies data from the server with the sessionId in the body
-        fetch('/api/getSharedMovies', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ sessionId: sessionId })
-        })
-            .then(res => res.json())
-            .then(data => {
-                // Set the state with the liked movies data
-                setMovies(data.likedMovies)
-                console.log('liked movies:', data.likedMovies)
+        const fetchLikedMovies = () => {
+            // Fetch liked movies data from the server with the sessionId in the body
+            fetch('/api/getSharedMovies', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ sessionId: sessionId })
             })
-            .catch(error => {
-                console.error(error)
-            })
+                .then(res => res.json())
+                .then(data => {
+                    // Set the state with the liked movies data
+                    setMovies(data.likedMovies)
+                    console.log('liked movies:', data.likedMovies)
+                })
+                .catch(error => {
+                    console.error(error)
+                })
+        }
+
+        // Fetch liked movies data immediately
+        fetchLikedMovies()
+
+        // Fetch liked movies data every 2 seconds
+        const intervalId = setInterval(fetchLikedMovies, 2000)
+
+        // Clear the interval when the component unmounts
+        return () => clearInterval(intervalId)
     }, [])
 
     useEffect(() => {
