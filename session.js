@@ -148,6 +148,34 @@ const joinExistingSession = async (sessionId, storedName) => {
     }
 };
 
+const getAllLikedMovies = async (sessionId) => {
+    const { sessionCollection, client } = await connectDB();
+    try {
+        var intID = parseInt(sessionId);
+        console.log("Session ID for getting all liked movies: ", intID)
+        const result = await sessionCollection.find({ _id: intID }).toArray();
+        console.log("Getting all liked movies: ", result)
+        if (result) {
+            const likedMoviesIndices = result[0].movies.reduce((acc, value, index) => {
+                if (value >= 2) {
+                    acc.push(index);
+                }
+                return acc;
+            }, []);
+            console.log("liked movies indices: ", likedMoviesIndices)
+            return likedMoviesIndices;
+        } else {
+            return []
+        }
+    } catch (err) {
+        console.error(err);
+        return [];
+    } finally {
+        client.close();
+    }
+};
+
+
 const getUsersInSession = async (sessionId) => {
     const { sessionCollection, client } = await connectDB();
 
@@ -175,5 +203,5 @@ const getUsersInSession = async (sessionId) => {
 
 
 
-module.exports = { addSession, joinExistingSession, getUsersInSession, addLikedMovie };
+module.exports = { addSession, joinExistingSession, getUsersInSession, addLikedMovie, getAllLikedMovies };
 
