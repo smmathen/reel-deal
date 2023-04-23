@@ -1,8 +1,8 @@
 import React from "react";
 import Logo from "../components/Logo";
-import Bar from "../components/Bar"
 import { useState, useEffect } from "react";
 import Card from '../components/Card';
+import Bar from "../components/Bar"
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -60,13 +60,14 @@ export default function Home() {
   }
 
   return (
-    <div className="Home" style={{ height: "100vh", width: "75vw", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "white" }}>
-
-      {/* Card Component */}
-      <Card index={index} style={{ height: "40%" }} />
-
-      { /* menu bar  <div style={{ marginRight: "7rem" }} />or the bottom */}
-      <Bar />
+    <div className="Home" style={{ height: "100vh", width: "75vw", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "white"}}>
+        <div>
+            {/* Card Component */}
+            <Card index={index} style={{ height: "100%"}} />
+        </div>
+        <div style = {{width: "75vw"}}>
+            <Bar />
+        </div>
     </div>
   );
 }

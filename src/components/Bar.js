@@ -15,13 +15,13 @@ const Bar = ({ color, radius, width }) => {
         color: "white",
         display: "flex",
         justifyContent: "space-between",
-        paddingTop: "1rem",
-        paddingBottom: "1.2rem",
+        paddingTop: ".01rem",
+        paddingBottom: "3rem",
         justifyContent: "center",
         bottom: 0,
         left: 0,
         width: "100%",
-        height: "60px",
+        height: "70px",
         borderRadius: radius,
       }}
     >
@@ -36,8 +36,8 @@ const Bar = ({ color, radius, width }) => {
       </button>
       <div style={{ marginRight: "2rem" }} />
       <button style={{ background: "none", border: "none", cursor: "pointer" }}>
-        <i className="fas fa-cog" style={{ fontSize: "2rem", marginRight: "1rem" }}></i>
-        <span style={{ fontSize: "4rem" }}>⚙️</span>
+        <i className="fas fa-cog" style={{ fontSize: "2rem", marginRight: "1rem", color: "#fa0000"}}></i>
+        <span style={{ fontSize: "4rem" }}>❔</span>
       </button>
     </div>
   );
