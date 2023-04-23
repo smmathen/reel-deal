@@ -71,20 +71,24 @@ function Card(props) {
 
         likedMovie();
         setIndex(index => (index + 1));
-        if (index >= movies.length) {
+        if (index >= movies.length - 1) {
             router.push('/likedMovies')
+        } else {
+            window.sessionStorage.setItem('index', index + 1);
+            setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
         }
-        window.sessionStorage.setItem('index', index + 1);
-        setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
+
     }
 
     function handleXClick() {
         setIndex(index => (index + 1));
-        if (index >= movies.length) {
+        if (index >= movies.length - 1) {
             router.push('/likedMovies')
+        } else {
+            window.sessionStorage.setItem('index', index + 1);
+            setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
         }
-        window.sessionStorage.setItem('index', index + 1);
-        setImageURL(movies[index + 1 % movies.length].Image_Poster_Link);
+
     }
 
 
