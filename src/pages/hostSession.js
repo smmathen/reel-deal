@@ -31,7 +31,7 @@ export default function Session() {
                 .catch(error => {
                     console.error(error);
                 });
-        }, 3500); // 3.5 seconds
+        }, 1000); // 1 seconds
 
         return () => clearInterval(interval);
     }, [sessionId]);

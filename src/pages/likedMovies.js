@@ -42,6 +42,11 @@ export default function LikedMovies() {
         router.push('/')
     }
 
+    // const handleMovieReroll = () => {
+
+    //     router.push('/swipe')
+    // }
+
 
     return (
         <div className="container">
@@ -49,6 +54,10 @@ export default function LikedMovies() {
             <button className="end-session-button" onClick={handleEndSession}>
                 End Session
             </button>
+
+            {/* <button className="movie-reroll-button" onClick={handleMovieReroll}>
+                Movie Reroll
+            </button> */}
             <ul className="movies-list">
                 {movies.map((movieId, index) => (
                     <li key={index} className="movie-item">

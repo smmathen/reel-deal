@@ -107,6 +107,7 @@ const addLikedMovie = async (sessionId, index) => {
         }
         var intID = parseInt(sessionId);
         const result = await sessionCollection.find({ _id: intID }).toArray();
+        const numUsers = result[0].users.length;
         const updatedMovies = result[0].movies;
         console.log(`movies list before: ${updatedMovies}`)
         updatedMovies[index] += 1;
@@ -115,7 +116,7 @@ const addLikedMovie = async (sessionId, index) => {
         console.log(`Liked movie updated for session ${sessionId}.`);
         console.log("index is: ", index);
         console.log("Value at index: ", updatedMovies[index]);
-        if (updatedMovies[index] >= 2) {
+        if (updatedMovies[index] >= numUsers) {
             agreedOn = true;
         }
     } catch (error) {
@@ -155,9 +156,11 @@ const getAllLikedMovies = async (sessionId) => {
         console.log("Session ID for getting all liked movies: ", intID)
         const result = await sessionCollection.find({ _id: intID }).toArray();
         console.log("Getting all liked movies: ", result)
+        // get number of users in a session
         if (result) {
             const likedMoviesIndices = result[0].movies.reduce((acc, value, index) => {
-                if (value >= 2) {
+                const numUsers = result[0].users.length;
+                if (value >= numUsers) {
                     acc.push(index);
                 }
                 return acc;
