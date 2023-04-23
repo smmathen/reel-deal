@@ -44,23 +44,34 @@ function Card() {
         setIsFlipped(!isFlipped);
     };
 
+    function handleLoveClick() {
+        setIndex(index => (index + 1) % movies.length);
+        setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
+    }
+
+    function handleXClick() {
+        setIndex(index => (index + 1) % movies.length);
+        setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
+    }
+
+    console.log(imageURL);
     return (
         <div>
-            <div className ="card" onClick={handleClick}>
-                {!isFlipped && (
-                    <div style={{height:"100%"}}>
-                        {/* Logo */}
-                        <Logo/>
+            <div className="card" onClick={handleClick}>
+            {!isFlipped && (
+                <div style={{ height: "100%" }}>
+                    {/* Logo */}
+                    <Logo />
 
                         {/* Movie Poster */}
-                        <div style={{display:"flex", justifyContent: "center", alignItems: "center"}}>
-                        <img src={imageURL} alt="movie poster" style={{marginTop: "3vh", width:"250px"}} />
-                        </div>
+                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <img src={imageURL} alt="movie poster" style={{ marginTop: "3vh", width: "250px" }} />
                     </div>
-                )}
-                {isFlipped && (
-                    <div style={{height:"100%"}}>
-                        <Details index={index} movies={movies} />
+                </div>
+            )}
+            {isFlipped && (
+                <div style={{height:"100%"}}>
+                    <Details index={index} movies={movies} />
                     </div>
                 )}
             </div>
@@ -79,8 +90,8 @@ function Card() {
                 {isFlipped && (
                     <div style={{height:"100%"}}>
                         
-                    </div>
-                )}
+                </div>
+            )}
         </div>
     );
 }
