@@ -41,7 +41,19 @@ export default function Home() {
     };
 
     fetchData();
+    // check if there is a value for index in session storage
+    const storedIndex = window.sessionStorage.getItem('index');
+    if (storedIndex !== null) {
+      setIndex(parseInt(storedIndex));
+    } else {
+      setIndex(0);
+    }
   }, []);
+
+  useEffect(() => {
+    // store the updated index value to session storage
+    window.sessionStorage.setItem('index', index.toString());
+  }, [index]);
 
   function handleLoveClick() {
 
