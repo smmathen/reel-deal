@@ -45,7 +45,7 @@ export default function LikedMovies() {
 
     return (
         <div className="container">
-            <h1 className="title">Liked Movies</h1>
+            <h1 className="title">Movies Everyone Liked!</h1>
             <button className="end-session-button" onClick={handleEndSession}>
                 End Session
             </button>
@@ -65,6 +65,9 @@ export default function LikedMovies() {
                 ))}
             </ul>
             <style jsx>{`
+            body {
+              background-color: white;
+            }
             .container {
                 width: 100%;
                 max-width: 800px;
@@ -109,6 +112,7 @@ export default function LikedMovies() {
                 object-fit: cover;
                 margin-bottom: 0.5rem;
             }
+
             .movie-info {
                 display: flex;
                 align-items: center;
@@ -125,6 +129,7 @@ export default function LikedMovies() {
                 text-align: center;
             }
           `}</style>
+
             <Bar />
         </div>
     );
