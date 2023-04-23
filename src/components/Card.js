@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Details from "../components/Details";
 import Logo from "../components/Logo";
 
@@ -43,16 +43,6 @@ function Card() {
     const handleClick = () => {
         setIsFlipped(!isFlipped);
     };
-
-    function handleLoveClick() {
-        setIndex(index => (index + 1) % movies.length);
-        setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
-    }
-
-    function handleXClick() {
-        setIndex(index => (index + 1) % movies.length);
-        setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
-    }
 
     return (
         <div>

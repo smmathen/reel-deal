@@ -21,6 +21,35 @@ export default function Home() {
   }, []);
 
   function handleLoveClick() {
+
+    const likedMovie = async () => {
+      console.log("YOU LIKED A MOVIE")
+      const sessionId = window.sessionStorage.getItem('sessionId');
+
+      fetch('/api/addLikedMovie', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sessionId: parseInt(sessionId),
+          index,
+        }),
+      }).then(response => response.json())
+        .then(data => {
+          console.log("Response data: ", data);
+
+          if (data.agreedOn) {
+            alert("Both people have selected this movie!");
+          }
+        });
+
+
+
+    };
+
+    likedMovie();
+
     setIndex(index => (index + 1) % movies.length);
     setImageURL(movies[(index + 1) % movies.length].Image_Poster_Link);
   }
@@ -34,7 +63,7 @@ export default function Home() {
     <div className="Home" style={{ height: "100vh", width: "75vw", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "white" }}>
 
       {/* Card Component */}
-        <Card index={index} style={{height: "40%"}}/> 
+      <Card index={index} style={{ height: "40%" }} />
 
       { /* menu bar  <div style={{ marginRight: "7rem" }} />or the bottom */}
       <Bar />
