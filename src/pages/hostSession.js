@@ -1,12 +1,52 @@
 import { Inter } from 'next/font/google'
 import Ticket from '../components/Ticket'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Session() {
-    const [sessionId, setSessionID] = useState(111111);
-    useEffect(() => setSessionID(Math.floor(Math.random() * 90000) + 10000), [])
+    const [sessionId, setSessionId] = useState('')
+    const [users, setUsers] = useState([]);
+    const router = useRouter();
+
+    useEffect(() => {
+        // Make a GET request to retrieve the session data
+        const interval = setInterval(() => {
+            fetch('/api/getUsersInSession', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    sessionId
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("users available:", data.users)
+                    // Set the state with the users data
+                    setUsers(data.users);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }, 3500); // 3.5 seconds
+
+        return () => clearInterval(interval);
+    }, [sessionId]);
+
+    useEffect(() => {
+        const sessionId = window.sessionStorage.getItem('sessionId');
+        if (sessionId) {
+            setSessionId(sessionId);
+        }
+    }, [])
+
+    const handleStart = () => {
+        router.push('/swipe');
+    }
+
     return (
         <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", backgroundColor: "white" }}>
             <div style={{ position: "relative", top: "10%", fontSize: "300%" }}>
@@ -25,11 +65,11 @@ export default function Session() {
                     Movie Watchers:
                 </p>
                 <ul style={{ fontSize: "4vh" }}>
-                    <li style={{ color: "black" }}> Sean</li>
-                    <li style={{ color: "black" }}> Shawn</li>
-                    <li style={{ color: "black" }}> Shaun</li>
-                    <li style={{ color: "black" }}> Shawne</li>
+                    {users.map((user) => (
+                        <li key={user}>{user}</li>
+                    ))}
                 </ul>
+                <button onClick={handleStart}>Start</button>
             </div>
         </div>
     )

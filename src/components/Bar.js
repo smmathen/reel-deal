@@ -1,6 +1,13 @@
 import React from "react";
+import { useRouter } from 'next/router'
 
 const Bar = ({ color, radius, width }) => {
+  const router = useRouter();
+
+  const handleMovieClick = () => {
+    router.push("/likedMovies");
+  };
+
   return (
     <div
       style={{
@@ -18,20 +25,20 @@ const Bar = ({ color, radius, width }) => {
         borderRadius: radius,
       }}
     >
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <button style={{ background: "none", border: "none", cursor: "pointer" }} onClick={handleMovieClick}>
         <i className="fas fa-film" style={{ fontSize: "2rem" }}></i>
         <span style={{ fontSize: "4rem" }}>🎬</span>
-      </div>
+      </button>
       <div style={{ marginRight: "2rem" }} />
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <button style={{ background: "none", border: "none", cursor: "pointer" }}>
         <i className="fas fa-star" style={{ fontSize: "2rem", marginRight: "1rem" }}></i>
         <span style={{ fontSize: "4rem" }}>⭐</span>
-      </div>
+      </button>
       <div style={{ marginRight: "2rem" }} />
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <button style={{ background: "none", border: "none", cursor: "pointer" }}>
         <i className="fas fa-cog" style={{ fontSize: "2rem", marginRight: "1rem" }}></i>
         <span style={{ fontSize: "4rem" }}>⚙️</span>
-      </div>
+      </button>
     </div>
   );
 };
