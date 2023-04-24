@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Bar from "../components/Bar"
 
 export default function LikedMovies() {
     const [movies, setMovies] = useState([])
@@ -9,21 +10,32 @@ export default function LikedMovies() {
     useEffect(() => {
         const sessionId = sessionStorage.getItem('sessionId')
 
-        // Fetch liked movies data from the server with the sessionId in the body
-        fetch('/api/getSharedMovies', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ sessionId: sessionId })
-        })
-            .then(res => res.json())
-            .then(data => {
-                // Set the state with the liked movies data
-                setMovies(data.likedMovies)
-                console.log('liked movies:', data.likedMovies)
+        const fetchLikedMovies = () => {
+            // Fetch liked movies data from the server with the sessionId in the body
+            fetch('/api/getSharedMovies', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ sessionId: sessionId })
             })
-            .catch(error => {
-                console.error(error)
-            })
+                .then(res => res.json())
+                .then(data => {
+                    // Set the state with the liked movies data
+                    setMovies(data.likedMovies)
+                    console.log('liked movies:', data.likedMovies)
+                })
+                .catch(error => {
+                    console.error(error)
+                })
+        }
+
+        // Fetch liked movies data immediately
+        fetchLikedMovies()
+
+        // Fetch liked movies data every 2 seconds
+        const intervalId = setInterval(fetchLikedMovies, 2000)
+
+        // Clear the interval when the component unmounts
+        return () => clearInterval(intervalId)
     }, [])
 
     useEffect(() => {
@@ -41,13 +53,22 @@ export default function LikedMovies() {
         router.push('/')
     }
 
+    // const handleMovieReroll = () => {
+
+    //     router.push('/swipe')
+    // }
+
 
     return (
         <div className="container">
-            <h1 className="title">Liked Movies</h1>
+            <h1 className="title">Movies Everyone Liked!</h1>
             <button className="end-session-button" onClick={handleEndSession}>
                 End Session
             </button>
+
+            {/* <button className="movie-reroll-button" onClick={handleMovieReroll}>
+                Movie Reroll
+            </button> */}
             <ul className="movies-list">
                 {movies.map((movieId, index) => (
                     <li key={index} className="movie-item">
@@ -64,6 +85,9 @@ export default function LikedMovies() {
                 ))}
             </ul>
             <style jsx>{`
+            body {
+              background-color: white;
+            }
             .container {
                 width: 100%;
                 max-width: 800px;
@@ -108,6 +132,7 @@ export default function LikedMovies() {
                 object-fit: cover;
                 margin-bottom: 0.5rem;
             }
+
             .movie-info {
                 display: flex;
                 align-items: center;
@@ -124,6 +149,8 @@ export default function LikedMovies() {
                 text-align: center;
             }
           `}</style>
+
+            <Bar />
         </div>
     );
 
