@@ -70,7 +70,17 @@ export default function Session() {
                         <li key={user}>{user}</li>
                     ))}
                 </ul>
-                <button onClick={handleStart}>Start</button>
+                {/* <button onClick={handleStart}>Start</button> */}
+                <Button
+                    border="none"
+                    color="#FFDE59"
+                    height="100px"
+                    onClick={handleStart}
+                    radius="10%"
+                    width="400px"
+                >
+                    <a> Start </a>
+                </Button>
             </div>
         </div>
     )
