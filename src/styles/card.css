@@ -1,27 +1,16 @@
-.card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 75vh;
-    cursor: pointer;
-  }
-  
-  .card__front {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-  }
-  
-  .card__back {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: blue;
-    color: white;
-  }
-  
+.card__front {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 76vh;
+background-color: white;
+}
+
+.card__back {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 85vh;
+background-color: blue;
+color: white;
+}

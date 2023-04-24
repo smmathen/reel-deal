@@ -17,11 +17,11 @@ function Details({ index, movies }) {
     }
     return (
         <div>
-            <h3 style={{ fontSize: "5vh", textAlign: "center", margin: "2vh", color: "#F0080A", marginTop: "5vh"}}> {title} </h3>
-            <div style={{ marginLeft: "auto", marginRight: "auto", width: "100vh" }}>
+            <h3 style={{ fontSize: "5vh", textAlign: "center", marginBottom: "2vh", marginTop: "20px", color: "#F0080A"}}> {title} </h3>
+            <div style={{ marginLeft: "35vw", width: "100vw" }}>
                 <YouTube videoId={videoId} opts={opts} onReady={_onReady} />
             </div>
-            <div style={{ fontSize: "3vh", marginTop: "2vh", width: "100vh", marginLeft: "60vh" }}>
+            <div style={{ fontSize: "3vh", marginTop: "2vh", width: "70vw", marginLeft: "32vw"}}>
                 <p>{genre}</p>
                 <p>{rating}</p>
                 <p>{description}</p>
