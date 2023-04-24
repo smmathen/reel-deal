@@ -12,6 +12,10 @@ const Bar = ({ color, radius, width }) => {
     router.push("/swipe");
   };
 
+  const handleQuestionClick = () => {
+    router.push("/instructions");
+  }
+
   return (
     <div
       style={{
@@ -39,7 +43,7 @@ const Bar = ({ color, radius, width }) => {
         <span style={{ fontSize: "4rem" }}>⭐</span>
       </button>
       <div style={{ marginRight: "2rem" }} />
-      <button style={{ background: "none", border: "none", cursor: "pointer" }}>
+      <button style={{ background: "none", border: "none", cursor: "pointer" }} onClick={handleQuestionClick}>
         <i className="fas fa-cog" style={{ fontSize: "2rem", marginRight: "1rem", color: "#fa0000"}}></i>
         <span style={{ fontSize: "4rem" }}>❔</span>
       </button>
