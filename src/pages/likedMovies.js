@@ -90,7 +90,7 @@ export default function LikedMovies() {
               background-color: white;
             }
             .container {
-                width: 51.9vw;
+                width: 75vw;
                 max-width: 800px;
                 margin: 0 auto;
             }
@@ -99,7 +99,7 @@ export default function LikedMovies() {
                 position: absolute;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 51.9vw;
+                width: 75vw;
                 height: 100vh;
                 background-color: white;
                 z-index: -1;
@@ -118,8 +118,8 @@ export default function LikedMovies() {
                 border-radius: 5px;
                 padding: 0.5rem 1rem;
                 position: absolute;
-                top: 1rem;
-                right: 1rem;
+                top: 34rem;
+                right: 6.5rem;
             }
             .movies-list {
                 list-style: none;
@@ -128,7 +128,7 @@ export default function LikedMovies() {
                 display: flex;
                 flex-wrap: wrap;
                 background-color: white;
-                width: 51.9vw;
+                width: 75vw;
             }
 
             .movie-item {
@@ -162,7 +162,7 @@ export default function LikedMovies() {
                 text-align: center;
             }
           `}</style>
-            <div style = {{position: "absolute", bottom: "0"}}>
+            <div style = {{position: "absolute", bottom: "0", width: "75vw"}}>
                 <Bar />
             </div>
         </div>
