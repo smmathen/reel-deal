@@ -61,6 +61,7 @@ export default function LikedMovies() {
 
     return (
         <div className="container">
+            <div className="white-background"></div>
             <h1 className="title">Movies Everyone Liked!</h1>
             <button className="end-session-button" onClick={handleEndSession}>
                 End Session
@@ -89,15 +90,25 @@ export default function LikedMovies() {
               background-color: white;
             }
             .container {
-                width: 100%;
+                width: 51.9vw;
                 max-width: 800px;
                 margin: 0 auto;
-                padding: 2rem;
+            }
+
+            .white-background {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 51.9vw;
+                height: 100vh;
+                background-color: white;
+                z-index: -1;
             }
 
             .title {
                 text-align: center;
-                margin-bottom: 1.5rem;
+                background-color: white;
+                margin: 0;
             }
 
             .end-session-button {
@@ -116,6 +127,8 @@ export default function LikedMovies() {
                 margin: 0;
                 display: flex;
                 flex-wrap: wrap;
+                background-color: white;
+                width: 51.9vw;
             }
 
             .movie-item {
@@ -149,8 +162,9 @@ export default function LikedMovies() {
                 text-align: center;
             }
           `}</style>
-
-            <Bar />
+            <div style = {{position: "absolute", bottom: "0"}}>
+                <Bar />
+            </div>
         </div>
     );
 
