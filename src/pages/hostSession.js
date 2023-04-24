@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import Ticket from '../components/Ticket'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Button from '../components/Button';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -61,16 +62,25 @@ export default function Session() {
                 </div>
             </div>
             <div style={{ position: "relative", top: "10%", textAlign: "center", margin: "auto" }}>
-            <p style={{ fontSize: "5vh" }}>Movie Watchers:</p>
-            <ul style={{ fontSize: "4vh", display: "flex", flexWrap: "wrap", maxWidth: "80%" }}>
-                {users.map((user) => (
-                <li key={user} style={{ flexBasis: "25%", minWidth: "100px" }}>
-                    {user}
-                </li>
-                ))}
-            </ul>
+                <p style={{ fontSize: "5vh" }}>Movie Watchers:</p>
+                <ul style={{ fontSize: "4vh", display: "flex", flexWrap: "wrap", maxWidth: "80%" }}>
+                    {users.map((user) => (
+                        <li key={user} style={{ flexBasis: "25%", minWidth: "100px" }}>
+                            {user}
+                        </li>
+                    ))}
+                </ul>
 
-            <button onClick={handleStart}>Start</button>
+                <Button
+                    border="none"
+                    color="#FFDE59"
+                    height="100px"
+                    onClick={handleStart}
+                    radius="10%"
+                    width="400px"
+                >
+                    <a> Start </a>
+                </Button>
             </div>
 
         </div>
