@@ -1,0 +1,16 @@
+.card__front {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 76vh;
+background-color: white;
+}
+
+.card__back {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 85vh;
+background-color: blue;
+color: white;
+}
