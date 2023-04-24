@@ -1,34 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Reel Deal
+Reel Deal is a movie recommendation and voting app that allows users to create a shared movie list for a group of people to vote on. The app uses a movie list from IMDB and allows users to swipe left or right to indicate whether they like or dislike a movie. At the end of your session, the app displays a list of movies that everyone in the group has liked/
 
-## Getting Started
+## Installation
+To run Reel Deal, you will need to have Node.js and npm installed. Once you have installed these dependencies, you can run the app locally by following these steps:
 
-First, run the development server:
+1. Clone the repository to your local machine
+2. Navigate to the project directory in your terminal
+3. Run npm install to install the project dependencies
+4. Run npm run dev to start the development server
+5. Open a web browser and navigate to http://localhost:3000 to view the app
 
-```bash
-npm run dev
-```
+Additionally, you can view the hosted version of the application at https://reel-deal.vercel.app/.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
+To use Reel Deal, simply create a new session by entering as a host session on the home page. Share the session code with your friends so they can join the session. Once everyone has joined, start swiping left or right to indicate whether you like or dislike a movie. The app will display a list of movies that everyone in the group has liked.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Contributing
+If you would like to contribute to Reel Deal, feel free to fork the repository and submit a pull request. Before making any changes, please create an issue to discuss your proposed changes with the project maintainers.
