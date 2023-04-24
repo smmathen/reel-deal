@@ -51,17 +51,19 @@ export default function Session() {
                     </p>
                 </div>
             </div>
-            <div style={{ position: "relative", top: "10%" }}>
-                <p style={{ fontSize: "5vh" }}>
-                    Movie Watchers:
-                </p>
-                <ul style={{ fontSize: "4vh" }}>
-                    {users.map((user) => (
-                        <li key={user}>{user}</li>
-                    ))}
-                </ul>
-                <button onClick={handleStart}>Start</button>
+            <div style={{ position: "relative", top: "10%", textAlign: "center", margin: "auto" }}>
+            <p style={{ fontSize: "5vh" }}>Movie Watchers:</p>
+            <ul style={{ fontSize: "4vh", display: "flex", flexWrap: "wrap", minwidth: "80%" }}>
+                {users.map((user) => (
+                <li key={user} style={{ flexBasis: "25%", minWidth: "100px" }}>
+                    {user}
+                </li>
+                ))}
+            </ul>
+
+            <button onClick={handleStart}>Start</button>
             </div>
+
         </div>
     )
 }
